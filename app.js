@@ -1,19 +1,16 @@
-var express = require('express');
-var app = express();
+var Koa = require('koa');
+var Router = require('koa-router');
+const serve = require('koa-static');
 
-app.use(express.static(__dirname + '/resources'));
-app.use(express.static(__dirname + '/view'));
-app.use(express.static(__dirname + '/app'));
+var app = new Koa();
+var router = new Router();
+app.use(serve(__dirname + '/resources'));
+app.use(serve(__dirname + '/view'));
+app.use(serve(__dirname + '/app'));
+app.use(router.routes());
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-})
+router.get('/hello', (ctx, next) => {
+  ctx.body = 'Hello World!';
+});
 
-var server = app.listen(80, function () {
-
-  var host = server.address().address
-  var port = server.address().port
-
-  console.log("应用实例，访问地址为 http://%s:%s","127.0.0.1", port)
-
-})
+app.listen(8081);

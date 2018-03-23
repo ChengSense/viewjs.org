@@ -1,0 +1,336 @@
+<page>
+
+
+
+
+  <div id="插值" class="container py-5">
+    <h4>
+      插值
+      <hr>
+    </h4>
+    <P>
+      插值用于把绑定相应变量的内容以文本的格式输出到视图和其他的框架一样用双大括号来表示。
+    </P>
+    <P>
+      语法
+    </P>
+    <pre>
+    <code class="html">
+    {{表达式}}
+    </code>
+    </pre>
+    <p>
+      示例
+    </p>
+    <pre>
+    <code class="html">
+    &lt;span id=&quot;msg&quot;&gt;Message: {{msg}}&lt;/span&gt;
+    </code>
+    </pre>
+    <pre>
+    <code class="code">
+    new View({
+      view: "span#msg",
+      model: {
+        msg: "输入点什么?"
+      }
+    });
+    </code>
+    </pre>
+    <pre>
+    <code class="html text">
+    输入点什么?
+    </code>
+    </pre>
+  </div>
+
+  <div id="条件" class="container py-5">
+    <h4>
+      条件<hr>
+    </h4>
+    <p>
+      View里的条件指令，相对于其他的js框架的条件的指令更容易理解（View的诞生其实和AngularJS糟糕难用的ng-if指令，多少有点关系。 在某个风和日丽的上午或者下午，当然现在记不太清了，当用到ng-if指令实现某个效果的时候，被坑了一些时间，现在想想当时心里估计有1w个曹尼玛奔腾而过， 当时就在想设计ng-if指令的人脑子是不是坏掉了，已于常人难以理解。于是对其好感度急剧下降，在想有没有一套更简单的前端框架，百度，谷歌然而并没有找到； 随后在某个晚上开始撸起代码）。
+    </p>
+    <p>
+      语法
+    </p>
+    <pre>
+    <code class="code">
+    @when(布尔表达式){
+      业务逻辑
+    }
+    </code>
+    </pre>
+    <P>示例</P>
+    <pre>
+    <code class="html">
+    &lt;div id=&quot;msg&quot;&gt;
+      @when(show){
+        &lt;span&gt;Message: {{msg}}&lt;/span&gt;
+      }
+    &lt;/div&gt;
+    </code>
+    </pre>
+    <pre>
+    <code class="code">
+    new View({
+      view: "div#msg",
+      model: {
+        msg: "输入点什么?",
+        show : true
+      }
+    });
+    </code>
+    </pre>
+    <pre>
+    <code class="html text">
+    输入点什么?
+    </code>
+    </pre>
+  </div>
+
+
+
+
+
+
+  <div id="条件分支" class="container py-5">
+    <h4>
+      条件分支<hr>
+    </h4>
+    <p>
+      @when 指令要配合 .when 指令一起使用,可以实现 if else 效果
+    </p>
+    <p>语法</p>
+    <pre>
+    <code class="html">
+    @when(布尔表达式){
+      业务逻辑
+    }
+    .when(布尔表达式){
+      业务逻辑
+    }
+    .when{
+      业务逻辑
+    }
+    </code>
+    </pre>
+    <p>示例</p>
+    <pre>
+    <code class="html">
+    &lt;div id=&quot;msg&quot;&gt;
+      @when(show){
+        &lt;span&gt;Message: {{ msg }}&lt;/span&gt;
+      }
+      .when{
+        hello wold ！
+      }
+    &lt;/div&gt;
+    </code>
+    </pre>
+    <pre>
+    <code class="code">
+    new View({
+      view: "div#msg",
+      model: {
+        msg: "输入点什么?",
+        show : false
+      }
+    });
+    </code>
+    </pre>
+    <pre>
+    <code class="html text">
+    hello wold ！
+    </code>
+    </pre>
+  </div>
+
+  <div id="循环" class="container py-5">
+    <h4>
+      循环<hr>
+    </h4>
+    <p>语法</p>
+    <pre>
+    <code class="html">
+    @each(变量：主键(可以省略)：数组||对象){
+      业务逻辑
+    }
+    </code>
+    </pre>
+    <p>示例</p>
+    <pre>
+    <code class="html">
+    &lt;ul id=&quot;ul&quot;&gt;
+      @each(li:ul){
+        &lt;li&gt;
+          {{li.text}}
+        &lt;/li&gt;
+      }
+    &lt;/ul&gt;
+    </code>
+    </pre>
+    <pre>
+    <code class="code">
+    new View({
+      view: "ul#ul",
+      model: {
+        ul: [{
+          text :"View.js"
+        },{
+          text :"Vue.js"
+        },{
+          text :"React.js"
+        }]
+      }
+    });
+    </code>
+    </pre>
+    <pre>
+    <code class="html text">
+      <ul>
+        <li>View.js</li>
+        <li>Vue.js</li>
+        <li>React.js</li>
+      </ul>
+    </code>
+    </pre>
+    <p class="text-danger">
+      注意点：循环表达式的参数
+      “变量：数组||对象”，如需要对象的主键这可以写成
+      “变量：主键(可以省略)：数组||对象” 主键的定义不是必须的，不需要的话可以省略
+    </p>
+  </div>
+
+
+
+  <div id="循环属性" class="container py-5">
+    <h4>
+      循环属性<hr>
+    </h4>
+    <p>循环属性 each请参考 @each指令用法并无不同</p>
+    <p>语法</p>
+    <pre>
+    <code class="html">
+    &lt;div each=&quot;item:key:list&quot;&gt;&lt;/ldiv&gt;
+    </code>
+    </pre>
+    <p>示例</p>
+    <pre>
+    <code class="html">
+    &lt;ul id=&quot;ul&quot;&gt;
+      &lt;li each=&quot;text:index:ul&quot;&gt;
+        {{ index + 1 }}. {{ text }}
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    </code>
+    </pre>
+    <pre>
+    <code class="code">
+    new View({
+      view: "ul#ul",
+      model: {
+        ul: ["View.js","Vue.js","React.js"]
+      }
+    });
+    </code>
+    </pre>
+    <pre>
+    <code class="html text">
+    <ul>
+        <li>1.View.js</li>
+        <li>2.Vue.js</li>
+        <li>3.React.js</li>
+    </ul>
+    </code>
+    </pre>
+  </div>
+
+
+
+
+  <div id="多层嵌套" class="container py-5">
+    <h4>
+      多层嵌套
+    </h4>
+    <p>多层嵌套，通过复杂的指令组合，完成想你所想效果</p>
+    <p>示例</p>
+    <pre>
+    <code class="html code">
+    &lt;ul id=&quot;ul&quot;each=&quot;text:index:ul&quot;&gt;
+      @each(item:ul){
+        &lt;li&gt;
+        @when(index==1}{
+          {{index + "." + text }}
+        }
+        .when{
+          {{index}}. hello wold ！
+        }
+        &lt;/li&gt;
+      }
+    &lt;/ul&gt;
+    </code>
+    </pre>
+    <pre>
+    <code class="code">
+    new View({
+      view: "ul#ul",
+      model: {
+        ul: ["View.js","Vue.js"]
+      }
+    });
+    </code>
+    </pre>
+    <pre>
+    <code class="html text">
+    <ul>
+        <li>0.View.js</li>
+        <li>1.hello wold !</li>
+    </ul>
+    <ul>
+        <li>0.View.js</li>
+        <li>1.hello wold !</li>
+    </ul>
+    </code>
+    </pre>
+  </div>
+
+  <div id="用户输入" class="container py-5">
+    <h4>
+      用户输入
+      <hr>
+    </h4>
+    <p>View体现了一切皆插值的理念，大幅度降低了概念性的设定，听过{{ }}指令绑定到value属性，就能简单的完成属性，数据的双向绑定</p>
+    <p>示例</p>
+    <pre>
+    <code class="html">
+    &lt;div id=&quot;input&quot;&gt;
+      &lt;div&gt; {{text}} &lt;/div&gt;
+      &lt;input value=&quot;{{text}}&quot;/&gt;
+    &lt;/div&gt;
+    </code>
+    </pre>
+    <pre>
+    <code class="code">
+    new View({
+      view: "div#input",
+      model: {
+        text:"输入点什么?"
+      }
+    });
+    </code>
+    </pre>
+    <p>试一下</p>
+    <pre>
+    <code class="html text">
+      <div id="input">
+        <input class="form-control" value="{{text}}" />
+        <div> {{text}} </div>
+      </div>
+    </code>
+  </pre>
+  <button type="button" class="btn btn-primary">
+   <a href="#/page3">下一页</a> 
+  </button>
+  </div>
+</page>
