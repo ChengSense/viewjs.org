@@ -9,30 +9,40 @@ axios.all([
 
   let home = new View({
     component: response[0].data,
-    model: {},
+    model: {
+
+    },
     action: {
-      dropDown() {
-        router.redreact("/page1");
-      }
+
     }
   });
 
   let page1 = new View({
     component: response[1].data,
     model: {},
-    action: {}
+    action: {
+
+    }
   });
 
   let page2 = new View({
     component: response[2].data,
-    model: {},
-    action: {}
+    model: {
+
+    },
+    action: {
+
+    }
   });
 
   let page3 = new View({
     component: response[3].data,
-    model: {},
-    action: {}
+    model: {
+
+    },
+    action: {
+
+    }
   });
 
   var app = new View({

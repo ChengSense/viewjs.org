@@ -1,17 +1,45 @@
 main {
 	height: calc(100vh);
 	overflow: auto;
-	background: #ecf0f1;
+	
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	background-image: url("http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg");
+	
+}
+
+/* home {
+	display: block;
+	height: 60%;
+}
+ */
+
+
+ #img>img {
+	display: block;
+    width: 130px;
+	height: 130px;
+    display: block;
+	border-radius: 50%;
+	position: fixed;
+    top: 53.5%;
+	left: calc(46.6vw);
+	background:white;
+}
+
+#img {
+	display: block;
+	height: 60%;
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 	background-image: url("http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg");
 }
 
-home {
+#go{
 	display: block;
-	height: 60%;
-	background-repeat:no-repeat;
-	background-size:100% 100%;
+	height: 40%;
+	background: #ecf0f1;
+	padding-top: 70px;
 }
 
 h4{
@@ -33,22 +61,14 @@ code{
 	padding:  0px;
 }
 
+
 div.container{
 	background: white;
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
 	transition: background-color 0.3s ease-in-out;
 }
 
-home>img {
-	display: block;
-    width: 100px;
-	height: 100px;
-    display: block;
-	border-radius: 50%;
-	position: fixed;
-    top: 55%;
-    left: calc(49vw);
-}
+
 
 footer{
 	height: 60px;
