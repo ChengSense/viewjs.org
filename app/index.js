@@ -12,7 +12,7 @@ axios.all([
     model: {},
     action: {
       dropDown() {
-        router.redreact("/page2");
+        router.redreact("/page1");
       }
     }
   });
