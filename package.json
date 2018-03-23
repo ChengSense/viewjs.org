@@ -6,7 +6,8 @@
   "dependencies": {
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
-    "koa-static": "^4.0.2"
+    "koa-static": "^4.0.2",
+    "nodemon": "^1.17.2"
   },
   "devDependencies": {},
   "scripts": {
