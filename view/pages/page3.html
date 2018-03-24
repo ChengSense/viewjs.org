@@ -5,18 +5,18 @@
       <hr>
     </h4>
     <p>
-      操作HTML元素的属性的是一个常见的需求，然而这一切很简单通过属性绑定 {{}} 指令很简单的赋予你对元素属性操作的能力。 让我们展示一个简单的例子，对元素属性绑定控制元素的隐藏和展示。
+      操作HTML元素的属性的是一个常见的需求，然而这一切很简单。通过属性绑定<code>{{}}</code>指令很简单的赋予你对元素属性操作的能力。 让我们展示一个简单的例子，对元素属性绑定控制元素的隐藏和展示。
     </p>
-    <p>示例</p>
+    <p>示例：</p>
     <pre>
     <code class="html">
     &lt;span style=&quot;display:{{show?&#39;block&#39;:&#39;none&#39;}}&quot;&gt;
-      Message: {{ msg }}
+      {{msg}}
     &lt;/span&gt;
     </code>
     </pre>
     <pre>
-    <code class="code">
+    <code class="js">
     new View({
       view: "span",
       model: {
@@ -32,7 +32,7 @@
     </code>
     </pre>
     <p>
-      在 {{}}指令里你可以使用“可以计算的表达式”，前提是要符合属性的规范，在规范里一切可以工作的很好
+      在<code>{{}}</code>指令里你可以使用“可以计算的表达式”，前提是要符合属性的规范，在规范里一切可以工作的很好
     </p>
     <P>
       亦或是
@@ -50,12 +50,12 @@
     <pre>
     <code class="html">
     &lt;span class=&quot;bg {{show}} {{some}}&quot;&gt;
-      Message: {{ msg }}
+      {{msg}}
     &lt;/span&gt;
     </code>
     </pre>
     <pre>
-    <code class="code">
+    <code class="js">
     new View({
       view: "span",
       model: {
@@ -77,16 +77,16 @@
       事件<hr>
     </h4>
     <p>在View配置里添加 action 参数配置，里面定义事件执行的函数；通过 @ + 事件类型 指令绑定到元素上，只要是浏览器默认的事件，通过这种方式都可以实现绑定</p>
-    <p>示例</p>
+    <p>示例：</p>
     <pre>
     <code class="html">
     &lt;button @click=&quot;alert(`{{msg}}`)&quot;&gt;
-      Message: {{ msg }}
+      {{msg}}
     &lt;/button &gt;
     </code>
     </pre>
     <pre>
-    <code class="code">
+    <code class="js">
     new View({
       view: "button",
       model: {
@@ -113,7 +113,7 @@
     <p>
       有内联关系的标签如：table > tbody > tr > td之间无法写文本的请用下面指令替代，适用一切标签之间
     </p>
-    <p>语法</p>
+    <p>语法：</p>
     <pre>
     <code class="html">
     循环：
@@ -138,14 +138,14 @@
       组件<hr>
     </h4>
     <p>组件对构建大型复杂的用户界面有很好的作用，通过模块构建，做组装成一个完整的用户界面</p>
-    <p>示例</p>
+    <p>示例：</p>
     <pre>
     <code class="html">
-    &lt;view&gt; {{@ form }} &lt;/view&gt;
+    {{@form}}
     </code>
     </pre>
     <pre>
-    <code class="code">
+    <code class="js">
     var form = new View({
       component: "&lt;input value='{{msg}}' /&gt;",
       model: {
@@ -173,7 +173,7 @@
       路由<hr>
     </h4>
     <p>组件对构建大型复杂的用户界面有很好的作用，通过模块构建，做组装成一个完整的用户界面</p>
-    <p>示例</p>
+    <p>示例：</p>
     <pre>
     <code class="html">
     &lt;!DOCTYPE html&gt;

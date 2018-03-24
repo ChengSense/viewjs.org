@@ -8,13 +8,6 @@ main {
 	
 }
 
-/* home {
-	display: block;
-	height: 60%;
-}
- */
-
-
  #img>img {
 	display: block;
     width: 130px;
@@ -22,19 +15,19 @@ main {
     display: block;
 	border-radius: 50%;
 	position: fixed;
-    top: 53.5%;
-	left: calc(46.6vw);
+    top: calc(50vh - 65px);
+	left: calc(50vw - 65px);
 	background:white;
 }
  #img>h1 {
 	display: block;
 	position: relative;
-    top: 60%;
+    top: 50%;
 }
 
 #img {
 	display: block;
-	height: 60%;
+	height: 50%;
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 	background-image: url("http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg");
@@ -42,9 +35,9 @@ main {
 
 #go{
 	display: block;
-	height: 40%;
+	height: 50%;
 	background: #ecf0f1;
-	padding-top: 70px;
+	padding-top: 80px;
 }
 
 h4{
@@ -52,8 +45,7 @@ h4{
 }
 
 p{
-	font-size: 0.875em;
-	font-weight: bold;
+	font-size: 14px;
 	padding:  0px 40px 0px 40px ;
 	
 }
@@ -66,15 +58,12 @@ code{
 	padding:  0px;
 }
 
-
 div.container{
 	background: white;
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
 	transition: background-color 0.3s ease-in-out;
 	margin-bottom: 10px;
 }
-
-
 
 footer{
 	height: 60px;
@@ -84,3 +73,25 @@ footer{
 	transition: background-color 0.3s ease-in-out;
 	background-color: rgb(255, 255, 255)
 }
+
+.code:before {
+	float: right;
+	content: "CODE";
+}
+
+.html:before {
+	float: right;
+    content: "HTML";
+}
+
+.js:before {
+	float: right;
+	content: "JS";
+	margin-right: 16px;
+}
+
+.cs:before {
+	float: right;
+    content: "CSS";
+}
+
