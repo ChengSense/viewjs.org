@@ -137,22 +137,22 @@
     <p>示例：</p>
     <pre>
     <code class="html">
-    {{@form}}
+    {{@input}}
     </code>
     </pre>
     <pre>
     <code class="js">
-    var form = new View({
+    var input = new View({
       component: "&lt;input value='{{msg}}' /&gt;",
       model: {
         msg: "输入点什么?"
       }
     });
 
-    var chapter = new View({
+    var app = new View({
       view: "view",
       model: {
-        form: form
+        input: input
       }
     });
     </code>

@@ -1,5 +1,3 @@
-
-
 axios.all([
   axios.get('/pages/home.html'),
   axios.get('/pages/page1.html'),
@@ -45,35 +43,39 @@ axios.all([
     }
   });
 
+  var page = new View({
+    component: 'pages',
+    model: {
+      page1, page2, page3
+    },
+    action: {
+
+    }
+  });
+
   var app = new View({
     view: "body",
     model: {
       router: "",
+      year: new Date().getFullYear()
     }
   });
 
   let router = new Router(app, {
     "/": {
       component: home,
+      router: "router",
       action(param) { },
       after() {
-        $('pre code').each(function (i, block) {
-          hljs.highlightBlock(block);
-        });
+
       }
     },
-    "/page1": {
-      component: page1,
-      action(param) { },
-      after() {
-        $('pre code').each(function (i, block) {
-          hljs.highlightBlock(block);
-        });
-      }
-    },
-    "/page2": {
-      component: page2,
-      action(param) { },
+    "page": {
+      component: page,
+      router: "router",
+      action(param) {
+
+      },
       after() {
         $('pre code').each(function (i, block) {
           hljs.highlightBlock(block);
@@ -83,15 +85,6 @@ axios.all([
           model: {
             text: "输入点什么?"
           }
-        });
-      }
-    },
-    "/page3": {
-      component: page3,
-      action(param) { },
-      after() {
-        $('pre code').each(function (i, block) {
-          hljs.highlightBlock(block);
         });
       }
     }

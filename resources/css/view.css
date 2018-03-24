@@ -1,11 +1,14 @@
 main {
 	height: calc(100vh);
 	overflow: auto;
-	
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 	background-image: url("http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg");
 	
+}
+
+#page1{
+	min-height: calc(100vh - 62px);
 }
 
  #img>img {
