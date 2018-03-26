@@ -1,8 +1,8 @@
 axios.all([
-  axios.get('/pages/home.html'),
-  axios.get('/pages/page1.html'),
-  axios.get('/pages/page2.html'),
-  axios.get('/pages/page3.html')
+  axios.get('view/pages/home.html'),
+  axios.get('view/pages/page1.html'),
+  axios.get('view/pages/page2.html'),
+  axios.get('view/pages/page3.html')
 ]).then(function (response) {
 
   let home = new View({
