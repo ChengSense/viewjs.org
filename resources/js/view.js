@@ -36,8 +36,8 @@ var view = (function (exports) {
   function Code(_express) {
     return new Function('_scope',
       `with (_scope) {
-		  return `+ _express + `;
-		}`
+         return `+ _express + `;
+      }`
     );
   }
 
@@ -54,15 +54,15 @@ var view = (function (exports) {
       get() {
         return new Function('scope',
           `
-        return scope`+ Path(path) + `;
-        `
+          return scope`+ Path(path) + `;
+          `
         )(scope);
       },
       set(val) {
         new Function('scope', 'val',
           `
-        scope`+ Path(path) + `=val;
-        `
+          scope`+ Path(path) + `=val;
+          `
         )(scope, val);
       }
     });
@@ -171,8 +171,8 @@ var view = (function (exports) {
       function notify(parm) {
         new Function('scope', 'val',
           `
-        scope`+ Path(root) + `=val;
-        `
+          scope`+ Path(root) + `=val;
+          `
         )(target, object);
       }
     }
@@ -398,7 +398,8 @@ var view = (function (exports) {
             initCompiler(node, item.children);
           });
           break;
-      }  });
+      }
+    });
   }
 
   function compiler(node, scopes, childNodes, content, attributes) {
@@ -619,8 +620,8 @@ var view = (function (exports) {
     owner.on("change", handle = function () {
       new Function('scope',
         `
-      scope`+ Path(owner._express) + `='` + owner.value.replace(/(\'|\")/g, "\\$1") + `';
-      `
+        scope`+ Path(owner._express) + `='` + owner.value.replace(/(\'|\")/g, "\\$1") + `';
+        `
       )(scope);
     });
     if (owner.nodeName == "SELECT") {
@@ -741,7 +742,7 @@ var view = (function (exports) {
       try {
         let app = code(node.clas.nodeValue, node.scope);
         node.path = [global.$path];
-        if(blank(app)) return;
+        if (blank(app)) return;
         extention(app.model, node.scope);
         var insert = insertion(node.childNodes);
         var childNodes = node.content.childNodes;
@@ -811,7 +812,8 @@ var view = (function (exports) {
           node = child.node;
           child.node = null;
           return node;
-        }      node = insertion(child.childNodes);
+        }
+        node = insertion(child.childNodes);
       });
       return node;
     } catch (e) {
@@ -884,7 +886,7 @@ var view = (function (exports) {
       }
     }
 
-    window.addEventListener("load", action, false);
+    window.addEventListener("load", action, action());
     window.addEventListener("onpopstate" in window ? "popstate" : "hashchange", action, false);
 
   }
