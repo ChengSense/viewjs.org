@@ -33,7 +33,7 @@ main {
 	height: 50%;
 	background-repeat:no-repeat;
 	background-size:100% 100%;
-	background-image: url("/img/page_background.jpg");
+	background-image: url("./img/page_background.jpg");
 }
 
 #go{
