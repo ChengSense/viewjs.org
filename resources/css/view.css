@@ -1,10 +1,7 @@
 main {
 	height: calc(100vh);
 	overflow: auto;
-	background-repeat:no-repeat;
-	background-size:100% 100%;
-	background-image: url("../img/page_background.jpg");
-	
+	background:#f8f8f8;
 }
 
 #page1{
@@ -33,7 +30,7 @@ main {
 	height: 50%;
 	background-repeat:no-repeat;
 	background-size:100% 100%;
-	background-image: url("../img/page_background.jpg");
+	background-image: url("http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg");
 }
 
 #go{
@@ -97,4 +94,3 @@ footer{
 	float: right;
     content: "CSS";
 }
-
