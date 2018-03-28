@@ -93,7 +93,7 @@
         show: "hide",
         some: ""
       },
-      action{
+      action: {
         alert(msg){
           alert(msg);
         }
@@ -168,7 +168,7 @@
     <h4>
       路由<hr>
     </h4>
-    <p>组件对构建大型复杂的用户界面有很好的作用，通过模块构建，做组装成一个完整的用户界面</p>
+    <p>路由提供了开发单页面应用的功能，用户通过 Router 和 <code>{{@ 组件 }}</code>的组合开发大型的应用；让我们通过一个例子展示路由的用法。 </p>
     <p>示例：</p>
     <pre>
     <code class="html">
@@ -240,18 +240,21 @@
       new Router(app, {
         &quot;home&quot;: {
           component: home,
+          router: "router",
           action(params) {
     
           }
         },
         &quot;detail/:name/:id&quot;: {
           component: detail,
+          router: "router",
           action(params) {
     
           }
         },
         &quot;edit/:name/:id&quot;: {
           component: edit,
+          router: &quot;router&quot;,
           action(params) {
     
           }
@@ -260,5 +263,58 @@
     &lt;/script&gt;
     </code>
     </pre>
+    <p>
+      我们定义了3个组件 @ <span class="text-success"> home ，detail，edit </span>；然后我们创建了一个 Router 对象，Router配置<span class="text-success"> "home" , "detail/:name/:id" , "edit/:name/:id"</span>
+      是映射跳转的路径；每个路径都关联了一个组件<span class="text-success"> component </span>属性；当页面跳转的时候会将关联的组件渲染到视图<code class="text-success">{{@router}}</code>，
+      <span class="text-success">"home"</span>映射下的router属性的值<span class="text-success">"router"</span>是组件的插入点，对应着<span class="text-success"> app.model.router </span>变量。
+      <span class="text-success">"&lt;a href=&quot;#home&quot;&gt;home !&lt;/a&gt;</span>的 <span class="text-success"> href </span>属性是触发视图变化的触发点。
+    </p>
+    <p>
+      动态路由：
+    </p>
+    <p>
+      <span class="text-success">"detail/:name/:id" </span>是动态路由的形式，对应的地址<span class="text-success">"detail/qwe/qwe"</span>,会解析成<code class="text-success">{"name":"qwe",id:"qwe"}</code>的参数形式。
+    </p>
+    <p>
+      路由参数：
+    </p>
+    <div class="ma">
+      <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td style="width:200px">
+            component
+          </td>
+          <td>
+            组件
+          </td>
+        </tr>
+        <tr>
+          <td>
+            router
+          </td>
+          <td>
+            组件的插入点
+          </td>
+        </tr>
+        <tr>
+          <td>
+            action
+          </td>
+          <td>
+            渲染前调用的方法
+          </td>
+        </tr>
+        <tr>
+          <td>
+            after
+          </td>
+          <td>
+            渲染后调用的方法
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
   </div>
 </page>
