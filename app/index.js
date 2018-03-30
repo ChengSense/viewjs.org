@@ -68,7 +68,7 @@ axios.all([
       component: home,
       router: "router",
       action: function (param) { },
-      after() {
+      after: function () {
 
       }
     },
