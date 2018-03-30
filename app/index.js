@@ -54,18 +54,18 @@ let router = new Router(app, {
   "/": {
     component: home,
     router: "router",
-    action(param) { },
-    after() {
+    action: function (param) { },
+    after: function () {
 
     }
   },
   "page": {
     component: page,
     router: "router",
-    action(param) {
+    action: function (param) {
 
     },
-    after() {
+    after: function () {
       $('pre code').each(function (i, block) {
         hljs.highlightBlock(block);
       });
