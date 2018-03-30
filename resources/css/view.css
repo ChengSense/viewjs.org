@@ -30,7 +30,7 @@ main {
 	height: 50%;
 	background-repeat:no-repeat;
 	background-size:100% 100%;
-	background-image: url("http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg");
+	background-image: url("resources/img/page_background.jpg");
 }
 
 #go{
