@@ -46,9 +46,9 @@ axios.all([
   var page = new View({
     component: 'pages',
     model: {
-      page1 :page1,
-      page2: page2, 
-      page3:page3
+      page1: page1,
+      page2: page2,
+      page3: page3
     },
     action: {
 
@@ -67,7 +67,7 @@ axios.all([
     "/": {
       component: home,
       router: "router",
-      action(param) { },
+      action: function (param) { },
       after() {
 
       }
@@ -75,10 +75,10 @@ axios.all([
     "page": {
       component: page,
       router: "router",
-      action(param) {
+      action: function (param) {
 
       },
-      after() {
+      after: function () {
         $('pre code').each(function (i, block) {
           hljs.highlightBlock(block);
         });
