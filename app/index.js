@@ -46,7 +46,9 @@ axios.all([
   var page = new View({
     component: 'pages',
     model: {
-      page1, page2, page3
+      page1 :page1,
+      page2: page2, 
+      page3:page3
     },
     action: {
 
