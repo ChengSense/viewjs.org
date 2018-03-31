@@ -871,15 +871,13 @@ var view = (function (exports) {
     this.redreact = redreact;
 
     var supportsPushState = (function () {
-      var ua = window.navigator.userAgent;
+      var userAgent = window.navigator.userAgent;
       if (
-        (ua.indexOf('Android 2.') !== -1 || 
-         ua.indexOf('Android 4.0') !== -1) &&
-         ua.indexOf('Mobile Safari') !== -1 &&
-         ua.indexOf('Chrome') === -1 &&
-         ua.indexOf('Windows Phone') === -1
+        (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1) ||
+        (userAgent.indexOf("Trident") > -1) ||
+        (userAgent.indexOf("Edge") > -1)
       ) {
-        return false;
+        return false
       }
       return window.history && 'pushState' in window.history
     })();
