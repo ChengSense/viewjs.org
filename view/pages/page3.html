@@ -1,320 +1,326 @@
 <page>
-  <div id="属性绑定" class="container py-5">
-    <h4>
-      属性绑定
-      <hr>
-    </h4>
-    <p>
-      操作HTML元素的属性的是一个常见的需求，然而这一切很简单。通过属性绑定<code>{{}}</code>指令很简单的赋予你对元素属性操作的能力。 让我们展示一个简单的例子，对元素属性绑定控制元素的隐藏和展示。
-    </p>
-    <p>示例：</p>
-    <pre>
-    <code class="html">
-    &lt;span style=&quot;display:{{show?&#39;block&#39;:&#39;none&#39;}}&quot;&gt;
-      {{msg}}
-    &lt;/span&gt;
-    </code>
-    </pre>
-    <pre>
-    <code class="js">
-    new View({
-      view: "span",
-      model: {
-        msg: "输入点什么?"
-        show: true
-      }
-    });
-    </code>
-    </pre>
-    <pre>
-    <code class="html text">
-    输入点什么?
-    </code>
-    </pre>
-    <p>
-      在<code>{{}}</code>指令里你可以使用“可以计算的表达式”，前提是要符合属性的规范，在规范里一切可以工作的很好
-    </p>
-    <P>
-      亦或是
-    </P>
-    <pre>
-    <code class="js cs">
-    .show{
-      display:block;
-    }
-    .hide{
-      display:none;
-    }
-    </code>
-    </pre>
-    <pre>
-    <code class="html">
-    &lt;span class=&quot;bg {{show}} {{some}}&quot;&gt;
-      {{msg}}
-    &lt;/span&gt;
-    </code>
-    </pre>
-    <pre>
-    <code class="js">
-    new View({
-      view: "span",
-      model: {
-        msg: "输入点什么?"
-        show: "hide",
-        some: ""
-      }
-    });
-    </code>
-    </pre>
-    <p>
-      我们可以通过属性绑定<code>{{}}</code>指令 赋予你超强的属性靠控制力，即使你的定义多个变量绑定的class也毫不费力； 上面的例子我们定定义了毫无用处的 class：some 然而并不影响最终的展示结果。
-    </p>
-  </div>
-
-  <div id="事件" class="container py-5">
-    <h4>
-      事件<hr>
-    </h4>
-    <p>在View配置里添加 action 参数配置，里面定义事件执行的函数；通过 @ + 事件类型 指令绑定到元素上，只要是浏览器默认的事件，通过这种方式都可以实现绑定</p>
-    <p>示例：</p>
-    <pre>
-    <code class="html">
-    &lt;button @click=&quot;alert(`{{msg}}`)&quot;&gt;
-      {{msg}}
-    &lt;/button &gt;
-    </code>
-    </pre>
-    <pre>
-    <code class="js">
-    new View({
-      view: "button",
-      model: {
-        msg: "输入点什么?"
-        show: "hide",
-        some: ""
-      },
-      action: {
-        alert(msg){
-          alert(msg);
-        }
-      }
-    });
-    </code>
-    </pre>
-  </div>
-
-  <div id="内联元素" class="container py-5">
-    <h4>
-      内联元素<hr>
-    </h4>
-    <p>
-      有内联关系的标签如：table > tbody > tr > td之间无法写文本的请用下面指令替代，适用一切标签之间
-    </p>
-    <p>语法：</p>
-    <pre>
-    <code class="html">
-    循环：
-    &lt;!@each(变量：主键: 数组||对象){&gt;
-      业务逻辑
-    &lt;!}&gt;
-
-    条件：
-    &lt;!@when(布尔表达式){&gt; 
-      业务逻辑
-    &lt;!}&gt;
-    &lt;!.when{&gt;
-      业务逻辑
-    &lt;!}&gt;
-    </code>
-    </pre>
-  </div>
-
-  <div id="组件" class="container py-5">
-    <h4>
-      组件<hr>
-    </h4>
-    <p>组件对构建大型复杂的用户界面有很好的作用，通过模块构建，做组装成一个完整的用户界面</p>
-    <p>示例：</p>
-    <pre>
-    <code class="html">
-    {{@input}}
-    </code>
-    </pre>
-    <pre>
-    <code class="js">
-    var input = new View({
-      component: "&lt;input value='{{msg}}' /&gt;",
-      model: {
-        msg: "输入点什么?"
-      }
-    });
-
-    var app = new View({
-      view: "view",
-      model: {
-        input: input
-      }
-    });
-    </code>
-    </pre>
-    <pre>
-    <code class="html text">
-    输入点什么?
-    </code>
-    </pre>
-  </div>
-
-  <div id="路由" class="container py-5">
-    <h4>
-      路由<hr>
-    </h4>
-    <p>路由提供了开发单页面应用的功能，用户通过 Router 和 <code>{{@ 组件 }}</code>的组合开发大型的应用；让我们通过一个例子展示路由的用法。 </p>
-    <p>示例：</p>
-    <pre>
-    <code class="html">
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    
-    &lt;head&gt;
-      &lt;title&gt;main.html&lt;/title&gt;
-      &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-      &lt;script type=&quot;text/javascript&quot; src=&quot;../../release/view.js&quot;&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    
-    &lt;body&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;a href=&quot;#home&quot;&gt;home !&lt;/a&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;a href=&quot;#detail/qwe/qwe&quot;&gt;detail !&lt;/a&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;a href=&quot;#edit/qwe/qwe&quot;&gt;edit !&lt;/a&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          {{@router}}
-        &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;home&gt;
-        {{name}}
-      &lt;/home&gt;
-      &lt;detail&gt;
-        {{name}}
-      &lt;/detail&gt;
-      &lt;edit&gt;
-        {{name}}
-      &lt;/edit&gt;
-    &lt;/body&gt;
-    
-    &lt;/html&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-      var home = new View({
-        component: &quot;home&quot;,
+    <div id="属性绑定" class="container py-5">
+      <h4>
+        属性绑定
+        <hr>
+      </h4>
+      <p>
+        操作HTML元素的属性的是一个常见的需求，然而这一切很简单。通过属性绑定<code>{{}}</code>指令很简单的赋予你对元素属性操作的能力。 让我们展示一个简单的例子，对元素属性绑定控制元素的隐藏和展示。
+      </p>
+      <p>示例：</p>
+      <pre>
+      <code class="html">
+      &lt;span style=&quot;display:{{show?&#39;block&#39;:&#39;none&#39;}}&quot;&gt;
+        {{msg}}
+      &lt;/span&gt;
+      </code>
+      </pre>
+      <pre>
+      <code class="js">
+      new View({
+        view: "span",
         model: {
-          name: &quot;home&quot;
+          msg: "输入点什么?"
+          show: true
         }
       });
-    
-      var detail = new View({
-        component: &quot;detail&quot;,
+      </code>
+      </pre>
+      <pre>
+      <code class="html text">
+      输入点什么?
+      </code>
+      </pre>
+      <p>
+        在<code>{{}}</code>指令里你可以使用“可以计算的表达式”，前提是要符合属性的规范，在规范里一切可以工作的很好
+      </p>
+      <P>
+        亦或是
+      </P>
+      <pre>
+      <code class="js cs">
+      .show{
+        display:block;
+      }
+      .hide{
+        display:none;
+      }
+      </code>
+      </pre>
+      <pre>
+      <code class="html">
+      &lt;span class=&quot;bg {{show}} {{some}}&quot;&gt;
+        {{msg}}
+      &lt;/span&gt;
+      </code>
+      </pre>
+      <pre>
+      <code class="js">
+      new View({
+        view: "span",
         model: {
-          name: &quot;detail&quot;
+          msg: "输入点什么?"
+          show: "hide",
+          some: ""
         }
       });
-    
-      var edit = new View({
-        component: &quot;edit&quot;,
-        model: {
-          name: &quot;edit&quot;
-        }
-      });
-    
-      var app = new View({
-        view: &quot;body&quot;,
-        model: {
-          router: detail
-        }
-      });
-    
-      new Router(app, {
-        &quot;home&quot;: {
-          component: home,
-          router: "router",
-          action(params) {
-    
-          }
-        },
-        &quot;detail/:name/:id&quot;: {
-          component: detail,
-          router: "router",
-          action(params) {
-    
-          }
-        },
-        &quot;edit/:name/:id&quot;: {
-          component: edit,
-          router: &quot;router&quot;,
-          action(params) {
-    
-          }
-        }
-      });
-    &lt;/script&gt;
-    </code>
-    </pre>
-    <p>
-      我们定义了3个组件 @ <span class="text-success"> home ，detail，edit </span>；然后我们创建了一个 Router 对象，Router配置<span class="text-success"> "home" , "detail/:name/:id" , "edit/:name/:id"</span>
-      是映射跳转的路径；每个路径都关联了一个组件<span class="text-success"> component </span>属性；当页面跳转的时候会将关联的组件渲染到视图<code class="text-success">{{@router}}</code>，
-      <span class="text-success">"home"</span>映射下的router属性的值<span class="text-success">"router"</span>是组件的插入点，对应着<span class="text-success"> app.model.router </span>变量。
-      <span class="text-success">"&lt;a href=&quot;#home&quot;&gt;home !&lt;/a&gt;</span>的 <span class="text-success"> href </span>属性是触发视图变化的触发点。
-    </p>
-    <p>
-      动态路由：
-    </p>
-    <p>
-      <span class="text-success">"detail/:name/:id" </span>是动态路由的形式，对应的地址<span class="text-success">"detail/qwe/qwe"</span>,会解析成<code class="text-success">{"name":"qwe",id:"qwe"}</code>的参数形式。
-    </p>
-    <p>
-      路由参数：
-    </p>
-    <div class="ma">
-      <table class="table table-bordered">
-      <tbody>
-        <tr>
-          <td style="width:200px">
-            component
-          </td>
-          <td>
-            组件
-          </td>
-        </tr>
-        <tr>
-          <td>
-            router
-          </td>
-          <td>
-            组件的插入点
-          </td>
-        </tr>
-        <tr>
-          <td>
-            action
-          </td>
-          <td>
-            渲染前调用的方法
-          </td>
-        </tr>
-        <tr>
-          <td>
-            after
-          </td>
-          <td>
-            渲染后调用的方法
-          </td>
-        </tr>
-      </tbody>
-      </table>
+      </code>
+      </pre>
+      <p>
+        我们可以通过属性绑定<code>{{}}</code>指令 赋予你超强的属性靠控制力，即使你的定义多个变量绑定的class也毫不费力； 上面的例子我们定定义了毫无用处的 class：some 然而并不影响最终的展示结果。
+      </p>
     </div>
-  </div>
-</page>
+  
+    <div id="事件" class="container py-5">
+      <h4>
+        事件<hr>
+      </h4>
+      <p>在View配置里添加 action 参数配置，里面定义事件执行的函数；通过 @ + 事件类型 指令绑定到元素上，只要是浏览器默认的事件，通过这种方式都可以实现绑定</p>
+      <p>示例：</p>
+      <pre>
+      <code class="html">
+      &lt;button @click=&quot;alert(`{{msg}}`)&quot;&gt;
+        {{msg}}
+      &lt;/button &gt;
+      </code>
+      </pre>
+      <pre>
+      <code class="js">
+      new View({
+        view: "button",
+        model: {
+          msg: "输入点什么?"
+          show: "hide",
+          some: ""
+        },
+        action: {
+          alert(msg){
+            alert(msg);
+          }
+        }
+      });
+      </code>
+      </pre>
+    </div>
+  
+    <div id="内联元素" class="container py-5">
+      <h4>
+        内联元素<hr>
+      </h4>
+      <p>
+        有内联关系的标签如：table > tbody > tr > td之间无法写文本的请用下面指令替代，适用一切标签之间
+      </p>
+      <p>语法：</p>
+      <pre>
+      <code class="html">
+      循环：
+      &lt;!@each(变量：主键: 数组||对象){&gt;
+        业务逻辑
+      &lt;!}&gt;
+  
+      条件：
+      &lt;!@when(布尔表达式){&gt; 
+        业务逻辑
+      &lt;!}&gt;
+      &lt;!.when{&gt;
+        业务逻辑
+      &lt;!}&gt;
+      </code>
+      </pre>
+    </div>
+  
+    <div id="组件" class="container py-5">
+      <h4>
+        组件<hr>
+      </h4>
+      <p>组件对构建大型复杂的用户界面有很好的作用，通过模块构建，做组装成一个完整的用户界面</p>
+     
+      <p>示例：</p>
+      <pre>
+      <code class="html">
+      {{@input}}
+      </code>
+      </pre>
+      <pre>
+      <code class="js">
+      var input = new View({
+        component: "&lt;input value='{{msg}}' /&gt;",
+        model: {
+          msg: "输入点什么?"
+        }
+      });
+  
+      var app = new View({
+        view: "view",
+        model: {
+          input: input
+        }
+      });
+      </code>
+      </pre>
+      <pre>
+      <code class="html text">
+      输入点什么?
+      </code>
+      </pre>
+      <p class="text-danger">
+        注意点：子组件<span class="text-success"> model </span>属性，默认继承父组件<span class="text-success"> model </span>属性；如果子组件定义了和父组件的相同的<span class="text-success"> model </span>属性则会进行覆盖，但是并不会影响父类<span class="text-success"> model </span>属性状态；
+        组件的<span class="text-success"> component </span>如果是有效的dom查询条件，则会查询当前文档获取组件模板，如果未查找到，则会吧<span class="text-success"> component </span>
+        得值解析成组件模板。
+      </p>
+    </div>
+  
+    <div id="路由" class="container py-5">
+      <h4>
+        路由<hr>
+      </h4>
+      <p>路由提供了开发单页面应用的功能，用户通过 Router 和 <code>{{@ 组件 }}</code>的组合开发大型的应用；让我们通过一个例子展示路由的用法。 </p>
+      <p>示例：</p>
+      <pre>
+      <code class="html">
+      &lt;!DOCTYPE html&gt;
+      &lt;html&gt;
+      
+      &lt;head&gt;
+        &lt;title&gt;main.html&lt;/title&gt;
+        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;../../release/view.js&quot;&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      
+      &lt;body&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#home&quot;&gt;home !&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#detail/qwe/qwe&quot;&gt;detail !&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#edit/qwe/qwe&quot;&gt;edit !&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            {{@router}}
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;home&gt;
+          {{name}}
+        &lt;/home&gt;
+        &lt;detail&gt;
+          {{name}}
+        &lt;/detail&gt;
+        &lt;edit&gt;
+          {{name}}
+        &lt;/edit&gt;
+      &lt;/body&gt;
+      
+      &lt;/html&gt;
+      &lt;script type=&quot;text/javascript&quot;&gt;
+        var home = new View({
+          component: &quot;home&quot;,
+          model: {
+            name: &quot;home&quot;
+          }
+        });
+      
+        var detail = new View({
+          component: &quot;detail&quot;,
+          model: {
+            name: &quot;detail&quot;
+          }
+        });
+      
+        var edit = new View({
+          component: &quot;edit&quot;,
+          model: {
+            name: &quot;edit&quot;
+          }
+        });
+      
+        var app = new View({
+          view: &quot;body&quot;,
+          model: {
+            router: detail
+          }
+        });
+      
+        new Router(app, {
+          &quot;home&quot;: {
+            component: home,
+            router: "router",
+            action(params) {
+      
+            }
+          },
+          &quot;detail/:name/:id&quot;: {
+            component: detail,
+            router: "router",
+            action(params) {
+      
+            }
+          },
+          &quot;edit/:name/:id&quot;: {
+            component: edit,
+            router: &quot;router&quot;,
+            action(params) {
+      
+            }
+          }
+        });
+      &lt;/script&gt;
+      </code>
+      </pre>
+      <p>
+        我们定义了3个组件 @ <span class="text-success"> home ，detail，edit </span>；然后我们创建了一个 Router 对象，Router配置<span class="text-success"> "home" , "detail/:name/:id" , "edit/:name/:id"</span>
+        是映射跳转的路径；每个路径都关联了一个组件<span class="text-success"> component </span>属性；当页面跳转的时候会将关联的组件渲染到视图<code class="text-success">{{@router}}</code>，
+        <span class="text-success">"home"</span>映射下的router属性的值<span class="text-success">"router"</span>是组件的插入点，对应着<span class="text-success"> app.model.router </span>变量。
+        <span class="text-success">"&lt;a href=&quot;#home&quot;&gt;home !&lt;/a&gt;</span>的 <span class="text-success"> href </span>属性是触发视图变化的触发点。
+      </p>
+      <p>
+        动态路由：
+      </p>
+      <p>
+        <span class="text-success">"detail/:name/:id" </span>是动态路由的形式，对应的地址<span class="text-success">"detail/qwe/qwe"</span>,会解析成<code class="text-success">{"name":"qwe",id:"qwe"}</code>的参数形式。
+      </p>
+      <p>
+        路由参数：
+      </p>
+      <div class="ma">
+        <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td style="width:200px">
+              component
+            </td>
+            <td>
+              组件
+            </td>
+          </tr>
+          <tr>
+            <td>
+              router
+            </td>
+            <td>
+              组件的插入点
+            </td>
+          </tr>
+          <tr>
+            <td>
+              action
+            </td>
+            <td>
+              渲染前调用的方法
+            </td>
+          </tr>
+          <tr>
+            <td>
+              after
+            </td>
+            <td>
+              渲染后调用的方法
+            </td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </page>
