@@ -134,6 +134,7 @@
       组件<hr>
     </h4>
     <p>组件对构建大型复杂的用户界面有很好的作用，通过模块构建，做组装成一个完整的用户界面</p>
+   
     <p>示例：</p>
     <pre>
     <code class="html">
@@ -162,6 +163,11 @@
     输入点什么?
     </code>
     </pre>
+    <p class="text-danger">
+      注意点：子组件<span class="text-success"> model </span>属性，默认继承父组件<span class="text-success"> model </span>属性；如果子组件定义了和父组件的相同的<span class="text-success"> model </span>属性则会进行覆盖，但是并不会影响父类<span class="text-success"> model </span>属性状态；
+      组件的<span class="text-success"> component </span>如果是有效的dom查询条件，则会查询当前文档获取组件模板，如果未查找到，则会吧<span class="text-success"> component </span>
+      得值解析成组件模板。
+    </p>
   </div>
 
   <div id="路由" class="container py-5">
