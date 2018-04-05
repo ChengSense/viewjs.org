@@ -1,0 +1,40 @@
+main {
+	height: calc(100vh);
+	overflow: auto;
+}
+#img>img {
+    width: 130px;
+	height: 130px;
+    display: block;
+	border-radius: 50%;
+	position: relative;
+    top: calc(50vh - 65px);
+	left: calc(50vw - 65px);
+	background:white;
+}
+ #img>h1 {
+	top: 20%;
+	display: block;
+	position: relative;
+}
+#img {
+	height: 50%;
+	display: block;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	background-image: url("http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg");
+}
+#go{
+	height: 50%;
+	display: block;
+	background: #ecf0f1;
+	padding-top: 80px;
+}
+footer{
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+	transition: background-color 0.3s ease-in-out;
+	background-color: rgb(255, 255, 255)
+}

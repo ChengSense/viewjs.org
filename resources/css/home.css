@@ -1,0 +1,70 @@
+header{
+	box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+	transition: background-color 0.3s ease-in-out;
+	background-color: #fff;
+}
+main {
+	padding-top: 56px;
+	position: relative;
+}
+footer{
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	box-shadow: 1px 0 5px rgba(0, 0, 0, 0.25);
+	transition: background-color 0.3s ease-in-out;
+	background-color: rgb(255, 255, 255)
+}
+h4{
+	padding:  0px 20px 0px 20px ;
+}
+p{
+	font-size: 14px;
+	padding:  0px 20px 0px 20px ;
+}
+
+pre{
+	padding:  0px 20px 0px 20px ;
+}
+code{
+	padding:  0px;
+}
+#search{
+	border-radius: 1rem;
+}
+.col-10{
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	min-height: calc(100vh + 56px);
+}
+.right{
+	margin-top: 50px;
+	list-style:none;
+	position: fixed;
+}
+.right>li{
+	margin-top: 20px;
+}
+
+.ma{
+	font-size: 14px;
+	padding:  0px 20px 0px 20px ;
+}
+.code:before {
+	float: right;
+	content: "CODE";
+}
+.html:before {
+	float: right;
+    content: "HTML";
+}
+.js:before {
+	float: right;
+	content: "JS";
+	margin-right: 16px;
+}
+.cs:before {
+	float: right;
+    content: "CSS";
+}
+

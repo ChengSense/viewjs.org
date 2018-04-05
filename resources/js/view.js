@@ -883,6 +883,10 @@ var view = (function (exports) {
         if (router.after) {
           router.after();
         }
+      } else {
+        if (event == undefined || event.type == "load") {
+          redreact("");
+        }
       }
     }
 

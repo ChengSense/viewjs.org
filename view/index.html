@@ -4,7 +4,7 @@
 <head>
   <title>View.js</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="/css/view.css" />
+  <link rel="stylesheet" type="text/css" href="/css/index.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/highlight/atom-one-light.css">
   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -17,20 +17,39 @@
 </head>
 
 <body>
-  <header class="fixed-top">
-  </header>
   <main>
-    {{@router}}
-    <pages> 
-      {{@page1}} 
-      {{@page2}} 
-      {{@page3}}
-    </pages>
-    <footer class="fixed-bottom font-weight-bold">
-      遵循 MIT 开源协议 Copyright © 2015-{{year}} SENSE
-    </footer>
+    <home class="text-center">
+      <div id="img">
+        <img src="img/logo.svg">
+        <h1>viewjs</h1>
+      </div>
+      <div id="go">
+        <h4>进入教程
+          <a href="home.html" class="text-success">现在开始 >></a>
+        </h4>
+        <h4 class="text-primary pt-3">
+          View是一个现代化的构建用户界面的框架
+        </h4>
+        <h4 class="text-primary pt-3">
+          她提供了一套极简api，帮助用户高效的完成前端的UI开发
+        </h4>
+        <h4 class="text-primary pt-3">
+          如写意泼墨山水!
+        </h4>
+      </div>
+    </home>
   </main>
+  <footer>
+    遵循 MIT 开源协议 Copyright © 2015-{{year}} SENSE
+  </footer>
 </body>
-<script src="/index.js"></script>
+<script>
+  new View({
+    view: "footer",
+    model: {
+      year: new Date().getFullYear()
+    }
+  });
+</script>
 
 </html>
