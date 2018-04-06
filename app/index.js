@@ -1,13 +1,5 @@
-var home = new View({
-  component: get("view/pages/home.html"),
-  model: {},
-  action: {
-
-  }
-});
-
 var page1 = new View({
-  component: get("view/pages/page1.html"),
+  component: get("/view/pages/page1.html"),
   model: {},
   action: {
 
@@ -15,7 +7,7 @@ var page1 = new View({
 });
 
 var page2 = new View({
-  component: get("view/pages/page2.html"),
+  component: get("/view/pages/page2.html"),
   model: {},
   action: {
 
@@ -23,7 +15,7 @@ var page2 = new View({
 });
 
 var page3 = new View({
-  component: get("view/pages/page3.html"),
+  component: get("/view/pages/page3.html"),
   model: {},
   action: {
 
@@ -52,19 +44,9 @@ var app = new View({
 
 let router = new Router(app, {
   "/": {
-    component: home,
-    router: "router",
-    action: function (param) { },
-    after: function () {
-
-    }
-  },
-  "page": {
     component: page,
     router: "router",
-    action: function (param) {
-
-    },
+    action: function (param) { },
     after: function () {
       $('pre code').each(function (i, block) {
         hljs.highlightBlock(block);

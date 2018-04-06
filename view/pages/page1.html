@@ -1,68 +1,66 @@
 <page>
-  <div id="page1" class="container py-5">
-    <div id="开始">
-      <h4>开始
-        <hr>
-      </h4>
-      <p>
-        在页面的开头通过<span class="text-success"> &lt;script&gt; </span>引入View类库。<a href="https://github.com/vewjs/view">下载</a>
-      </p>
-      <p>示例：</p>
-      <pre>
-      <code class="html">
-      &lt;!DOCTYPE html&gt;
-      &lt;html&gt;
+  <div id="开始" class="pt-5">
+    <h4>
+      开始<hr>
+    </h4>
+    <p>
+      在页面的开头通过<span class="text-success"> &lt;script&gt; </span>引入View类库。<a href="https://github.com/vewjs/view">下载</a>
+    </p>
+    <p>示例：</p>
+    <pre>
+    <code class="html">
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    
+    &lt;head&gt;
+      &lt;title&gt;viewjs&lt;/title&gt;
+      &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+      &lt;script type=&quot;text/javascript&quot; src=&quot;release/view.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+
+      {{text}}
       
-      &lt;head&gt;
-        &lt;title&gt;viewjs&lt;/title&gt;
-        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-        &lt;script type=&quot;text/javascript&quot; src=&quot;release/view.js&quot;&gt;&lt;/script&gt;
-      &lt;/head&gt;
-      
-      &lt;body&gt;
+    &lt;/body&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    
+    var app = new View({
+      view: &quot;body&quot;,
+      model: {
+        text: "Hello, world!"
+      }
+    });
+    
+    &lt;/script&gt;
+    &lt;/html&gt;
+    </code>
+    </pre>
+  </div>
 
-        {{text}}
-        
-      &lt;/body&gt;
-      &lt;script type=&quot;text/javascript&quot;&gt;
-     
-      var app = new View({
-        view: &quot;body&quot;,
-        model: {
-          text: "Hello, world!"
-        }
-      });
-     
-      &lt;/script&gt;
-      &lt;/html&gt;
-      </code>
-      </pre>
-    </div>
+  <div id="编译" class="pt-5">
+    <h4>
+      编译<hr>
+    </h4>
+    <p>
+      GitHub 仓库的 /release 文件夹只有在新版本发布时才会提交。如果想要使用 GitHub 上 View 最新的源码，你需要自己构建！
+    </p>
+    <pre>
+    <code class="code">
+    git clone https://github.com/vewjs/view.git
+    cd view
+    npm install
+    npm run build
+    </code>
+    </pre>
+  </div>
 
-    <div id="编译">
-      <h4>编译
-        <hr>
-      </h4>
-      <p>
-        GitHub 仓库的 /release 文件夹只有在新版本发布时才会提交。如果想要使用 GitHub 上 View 最新的源码，你需要自己构建！
-      </p>
-      <pre>
-      <code class="code">
-      git clone https://github.com/vewjs/view.git
-      cd view
-      npm install
-      npm run build
-      </code>
-      </pre>
-    </div>
-
-    <div id="兼容性">
-      <h4>兼容性
-        <hr>
-      </h4>
-      <p>
-        由于采用了最新的HTML和es6的某些标准，不支持低版本的浏览器，如IE10以下本版，但是支持最新主流的桌面浏览器，和移动浏览器
-      </p>
-    </div>
+  <div id="兼容性" class="pt-5">
+    <h4>
+      兼容性<hr>
+    </h4>
+    <p>
+      由于采用了最新的HTML和es6的某些标准，不支持低版本的浏览器，如IE10以下本版，但是支持最新主流的桌面浏览器，和移动浏览器
+    </p>
   </div>
 </page>
