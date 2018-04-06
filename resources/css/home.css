@@ -1,6 +1,6 @@
 header{
-	box-shadow: 0 1px 5px rgba(0,0,0,0.25);
-	transition: background-color 0.3s ease-in-out;
+	transition: padding ease-in .4s;
+	box-shadow: 0 1px 3px rgba(0,0,0,.1);
 	background-color: #fff;
 }
 main {
@@ -11,8 +11,8 @@ footer{
 	height: 55px;
 	line-height: 55px;
 	text-align: center;
-	box-shadow: 1px 0 5px rgba(0, 0, 0, 0.25);
-	transition: background-color 0.3s ease-in-out;
+	transition: padding ease-in .4s;
+	box-shadow: 1px 0 5px rgba(0,0,0,.1);
 	background-color: rgb(255, 255, 255)
 }
 h4{
@@ -33,8 +33,8 @@ code{
 	border-radius: 1rem;
 }
 .col-10{
-	border-left: 1px solid #eee;
-	border-right: 1px solid #eee;
+	transition: padding ease-in .4s;
+	box-shadow: 0 1px 3px rgba(0,0,0,.1);
 	min-height: calc(100vh + 56px);
 }
 .right{
