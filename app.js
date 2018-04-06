@@ -4,9 +4,7 @@ const serve = require('koa-static');
 
 var app = new Koa();
 var router = new Router();
-app.use(serve(__dirname + '/resources'));
-app.use(serve(__dirname + '/view'));
-app.use(serve(__dirname + '/app'));
+app.use(serve(__dirname));
 app.use(router.routes());
 
 router.get('/hello', (ctx, next) => {
